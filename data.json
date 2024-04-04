@@ -1,0 +1,57 @@
+{
+    "shirt": {
+        "shirt-blue": {
+            "id": "s-blue",
+            "matches": ["p-white", "p-black", "sh-white", "sh-black"]
+        },
+
+        "shirt-red": {
+            "id": "s-red",
+            "matches": ["p-white", "p-black", "p-blue", "sh-white", "sh-black"]
+        },
+
+        "shirt-yellow": {
+            "id": "s-yellow",
+            "matches": ["p-blue", "p-black", "sh-black", "sh-white"]
+        },
+
+        "shirt-white": {
+            "id": "s-white",
+            "matches": ["p-blue", "p-black", "p-green", "sh-black", "sh-white"]
+        }
+    },
+
+    "pants": {
+        "pants-blue": {
+            "id": "p-blue",
+            "matches": ["s-white", "s-red", "sh-black", "sh-white"]
+        },
+
+        "pants-green": {
+            "id": "p-green",
+            "matches": ["s-white", "sh-black", "sh-white"]
+        },
+
+        "pants-white": {
+            "id": "p-white",
+            "matches": ["s-blue", "s-red", "sh-black"]
+        },
+
+        "pants-black": {
+            "id": "p-black",
+            "matches": ["s-blue", "s-white", "s-yellow", "s-red", "sh-white"]
+        }
+    },
+
+    "shoes": {
+        "shoes-white": {
+            "id": "sh-white",
+            "matches": ["s-blue", "s-white", "s-yellow", "s-red", "p-blue", "p-green", "p-black"]
+        },
+
+        "shoes-black": {
+            "id": "sh-black",
+            "matches": ["s-blue", "s-white", "s-yellow", "s-red", "p-blue", "p-green", "p-white"]
+        }
+    }
+}
