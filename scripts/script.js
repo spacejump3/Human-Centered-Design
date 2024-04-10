@@ -76,6 +76,7 @@ function createButtons(category) {
                       for (let item of combination) {
                           const li = document.createElement('li');
                           li.textContent = item;
+                          li.setAttribute('tabindex', '0');
                           ul.appendChild(li);
                       }
                       clothingList.appendChild(ul);
