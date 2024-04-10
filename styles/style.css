@@ -1,12 +1,18 @@
 html {
-	font-size: 1.5em;
-}
-
-:focus-visible {
-	background-color: yellow;
+	font-size: 2em;
 }
 
 ul {
 	margin: 1em 0 0 0;
+	padding: 0;
 	list-style: none;
+}
+
+button {
+	padding: 1em;
+	width: 10em;
+}
+
+:focus-visible {
+	background-color: yellow;
 }

@@ -1,103 +1,94 @@
-// Get the buttons
-// const buttons = document.querySelectorAll('button');
-const shirtBtn = document.getElementById('shirtBtn');
-const pantsBtn = document.getElementById('pantsBtn');
-const shoesBtn = document.getElementById('shoesBtn');
+// Fetch JSON data
+fetch('./data.json')
+    .then((response) => response.json())
+    .then((data) => {
+        // Get the buttons
+        let shirtBtn = document.getElementById('shirtBtn');
+        let pantsBtn = document.getElementById('pantsBtn');
+        let shoesBtn = document.getElementById('shoesBtn');
 
-// Get the container
-const clothingList = document.getElementById('clothingList');
+        // Keep track of the selected clothing pieces and their types
+        let selectedPieces = [];
+        let selectedTypes = [];
 
-// Add event listeners to the buttons
-shirtBtn.addEventListener('click', () => createButtons('shirt'));
-pantsBtn.addEventListener('click', () => createButtons('pants'));
-shoesBtn.addEventListener('click', () => createButtons('shoes'));
+        // Function to create new buttons
+        function createButtons(clothingType, matches) {
+            // Get the clothing data
+            let clothingData = data[clothingType];
 
-// Add click event listeners to the buttons
-shirtBtn.addEventListener('click', function () {
-	clothingList.setAttribute('aria-label', 'Dit is een lijst van shirts');
-	// Call your function to generate buttons
-});
+            // Get the container to put the buttons in
+            let container = document.getElementById('container');
 
-pantsBtn.addEventListener('click', function () {
-	clothingList.setAttribute('aria-label', 'Dit is een lijst van broeken');
-	// Call your function to generate buttons
-});
+            // Clear the container
+            container.innerHTML = '';
 
-shoesBtn.addEventListener('click', function () {
-	clothingList.setAttribute('aria-label', 'Dit is een lijst van schoenen');
-	// Call your function to generate buttons
-});
+            // Create a new button for each clothing piece
+            for (let clothingPiece in clothingData) {
+                // If matches is defined, only create buttons for matching pieces
+                if (!matches || matches.includes(clothingData[clothingPiece].id)) {
+                    let li = document.createElement('li');
+                    let btn = document.createElement('button');
+                    btn.innerText = clothingPiece;
+                    btn.addEventListener('click', function () {
+                        // Add the selected piece and its type to the lists
+                        selectedPieces.push(clothingPiece);
+                        selectedTypes.push(clothingType);
 
-// semi working thing
-function createButtons(category) {
-	// Fetch the data from the JSON file
-	fetch('data.json')
-		.then((response) => response.json())
-		.then((data) => {
-			// Clear the clothing list
-			clothingList.innerHTML = '';
+                        // If we're at the last piece, display the selected pieces
+                        if (selectedPieces.length === 3) {
+                            let p = document.createElement('p');
+                            p.innerText = 'U heeft de volgende outfit gekozen: ' + selectedPieces.join(', ') + '. Als u hier niet blij mee bent, kunt u opnieuw beginnen door op de volgende knop te drukken';
+                            container.appendChild(p);
 
-			// Get the category from the data
-			const items = data[category];
+                            // Disable all buttons
+                            let buttons = document.querySelectorAll('button');
+                            buttons.forEach((button) => (button.disabled = true));
 
-			let firstButton = null;
+                            // Add a restart button
+                            let restartBtn = document.createElement('button');
+                            restartBtn.innerText = 'Opnieuw een outfit kiezen';
+                            restartBtn.addEventListener('click', function () {
+                                // Clear the container
+                                container.innerHTML = '';
 
-			// Create a button and a li for each item in the category
-			for (let item in items) {
-				const btn = document.createElement('button');
-				btn.textContent = item;
+                                // Enable all buttons
+                                buttons.forEach((button) => (button.disabled = false));
 
-				// Add an event listener to the button
-				btn.addEventListener('click', () => {
-					// Clear the clothing list
-					clothingList.innerHTML = '';
+                                // Clear the selected pieces and types
+                                selectedPieces = [];
+                                selectedTypes = [];
+                            });
+                            container.appendChild(restartBtn);
+                        } else {
+                            // Otherwise, create the next set of buttons
+                            let nextType = ['shirt', 'pants', 'shoes'].find((type) => !selectedTypes.includes(type));
+                            createButtons(nextType, clothingData[clothingPiece].matches);
+                        }
+                    });
+                    li.appendChild(btn);
+                    container.appendChild(li);
+                }
+            }
 
-					// Get the matches of the item
-					const matches = items[item].matches;
+            // Focus on the first button
+            container.querySelector('button').focus();
+        }
 
-					// Get the ids of all shirts, pants, and shoes
-					const shirts = Object.values(data.shirt).map((item) => item.id);
-					const pants = Object.values(data.pants).map((item) => item.id);
-					const shoes = Object.values(data.shoes).map((item) => item.id);
-
-					// Create a list of all possible combinations of shirts, pants, and shoes
-					const combinations = [];
-					for (let shirt of shirts) {
-						for (let pant of pants) {
-							for (let shoe of shoes) {
-								// Get the names corresponding to the ids
-								const shirtName = Object.keys(data.shirt).find((key) => data.shirt[key].id === shirt);
-								const pantName = Object.keys(data.pants).find((key) => data.pants[key].id === pant);
-								const shoeName = Object.keys(data.shoes).find((key) => data.shoes[key].id === shoe);
-
-								combinations.push([shirtName, pantName, shoeName]);
-							}
-						}
-					}
-
-					// For each combination, create a new ul element and add li elements for each item in the combination
-					for (let combination of combinations) {
-						const ul = document.createElement('ul');
-						for (let item of combination) {
-							const li = document.createElement('li');
-							li.textContent = item;
-							li.setAttribute('tabindex', '0');
-							ul.appendChild(li);
-						}
-						clothingList.appendChild(ul);
-					}
-				});
-
-				const li = document.createElement('li');
-				li.appendChild(btn);
-
-				clothingList.appendChild(li);
-				if (!firstButton) {
-					firstButton = btn;
-				}
-			}
-			if (firstButton) {
-				firstButton.focus();
-			}
-		});
-}
+        // Add event listeners to the buttons
+        shirtBtn.addEventListener('click', function () {
+            selectedPieces = [];
+            selectedTypes = [];
+            createButtons('shirt');
+        });
+        pantsBtn.addEventListener('click', function () {
+            selectedPieces = [];
+            selectedTypes = [];
+            createButtons('pants');
+        });
+        shoesBtn.addEventListener('click', function () {
+            selectedPieces = [];
+            selectedTypes = [];
+            createButtons('shoes');
+        });
+    })
+    .catch((error) => console.error('Error:', error));
