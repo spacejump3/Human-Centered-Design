@@ -1,124 +1,97 @@
-const data = {
-    "shirt": {
-        "shirt-blue": {
-            "id": "s-blue",
-            "matches": ["p-white", "p-black", "sh-white", "sh-black"]
-        },
+// Get the buttons
+// const buttons = document.querySelectorAll('button');
+const shirtBtn = document.getElementById('shirtBtn');
+const pantsBtn = document.getElementById('pantsBtn');
+const shoesBtn = document.getElementById('shoesBtn');
 
-        "shirt-red": {
-            "id": "s-red",
-            "matches": ["p-white", "p-black", "p-blue", "sh-white", "sh-black"]
-        },
+// Get the container
+const clothingList = document.getElementById('clothingList');
 
-        "shirt-yellow": {
-            "id": "s-yellow",
-            "matches": ["p-blue", "p-black", "sh-black", "sh-white"]
-        },
+// Add event listeners to the buttons
+shirtBtn.addEventListener('click', () => createButtons('shirt'));
+pantsBtn.addEventListener('click', () => createButtons('pants'));
+shoesBtn.addEventListener('click', () => createButtons('shoes'));
 
-        "shirt-white": {
-            "id": "s-white",
-            "matches": ["p-blue", "p-black", "p-green", "sh-black", "sh-white"]
+// Add click event listeners to the buttons
+shirtBtn.addEventListener('click', function() {
+    clothingList.setAttribute('aria-label', 'Dit is een lijst van shirts');
+    // Call your function to generate buttons
+});
+
+pantsBtn.addEventListener('click', function() {
+    clothingList.setAttribute('aria-label', 'Dit is een lijst van broeken');
+    // Call your function to generate buttons
+});
+
+shoesBtn.addEventListener('click', function() {
+    clothingList.setAttribute('aria-label', 'Dit is een lijst van schoenen');
+    // Call your function to generate buttons
+});
+
+// semi working thing
+function createButtons(category) {
+  // Fetch the data from the JSON file
+  fetch('data.json')
+      .then(response => response.json())
+      .then(data => {
+          // Clear the clothing list
+          clothingList.innerHTML = '';
+
+          // Get the category from the data
+          const items = data[category];
+
+          let firstButton = null;
+
+          // Create a button and a li for each item in the category
+          for (let item in items) {
+              const btn = document.createElement('button');
+              btn.textContent = item;
+
+              // Add an event listener to the button
+              btn.addEventListener('click', () => {
+                  // Clear the clothing list
+                  clothingList.innerHTML = '';
+
+                  // Get the matches of the item
+                  const matches = items[item].matches;
+
+                  // Separate the matches into shirts, pants, and shoes
+                  const shirts = category !== 'shirt' ? matches.filter(match => match.startsWith('s-')).map(match => 'shirt-' + match.slice(2)) : [item];
+                  const pants = category !== 'pants' ? matches.filter(match => match.startsWith('p-')).map(match => 'pants-' + match.slice(2)) : [item];
+                  const shoes = category !== 'shoes' ? matches.filter(match => match.startsWith('sh-')).map(match => 'shoes-' + match.slice(2)) : [item];
+
+                  // Create a list of all possible combinations of shirts, pants, and shoes
+                  const combinations = [];
+                  for (let shirt of shirts) {
+                      for (let pant of pants) {
+                          for (let shoe of shoes) {
+                              combinations.push([shirt, pant, shoe]);
+                          }
+                      }
+                  }
+
+                  // For each combination, create a new ul element and add li elements for each item in the combination
+                  for (let combination of combinations) {
+                      const ul = document.createElement('ul');
+                      for (let item of combination) {
+                          const li = document.createElement('li');
+                          li.textContent = item;
+                          ul.appendChild(li);
+                      }
+                      clothingList.appendChild(ul);
+                  }
+              });
+
+              const li = document.createElement('li');
+              li.appendChild(btn);
+
+              clothingList.appendChild(li);
+              if (!firstButton) {
+                firstButton = btn;
+            }
+          }
+          if (firstButton) {
+            firstButton.focus();
         }
-    },
-
-    "pants": {
-        "pants-blue": {
-            "id": "p-blue",
-            "matches": ["s-white", "s-red", "s-yellow", "sh-black", "sh-white"]
-        },
-
-        "pants-green": {
-            "id": "p-green",
-            "matches": ["s-white", "sh-black", "sh-white"]
-        },
-
-        "pants-white": {
-            "id": "p-white",
-            "matches": ["s-blue", "s-red", "sh-black"]
-        },
-
-        "pants-black": {
-            "id": "p-black",
-            "matches": ["s-blue", "s-white", "s-yellow", "s-red", "sh-white"]
-        }
-    },
-
-    "shoes": {
-        "shoes-white": {
-            "id": "sh-white",
-            "matches": ["s-blue", "s-white", "s-yellow", "s-red", "p-blue", "p-green", "p-black"]
-        },
-
-        "shoes-black": {
-            "id": "sh-black",
-            "matches": ["s-blue", "s-white", "s-yellow", "s-red", "p-blue", "p-green", "p-white"]
-        }
-    }
-}
-
-document.getElementById("shirtBtn").addEventListener("click", function() {
-    console.log("Shirt button clicked");
-    displayVariants("shirt");
-  });
-  
-  document.getElementById("pantsBtn").addEventListener("click", function() {
-    console.log("Pants button clicked");
-    displayVariants("pants");
-  });
-  
-  document.getElementById("shoesBtn").addEventListener("click", function() {
-    console.log("Shoes button clicked");
-    displayVariants("shoes");
-  });
-  
-  function displayVariants(category) {
-    console.log("Displaying variants for category:", category);
-    const variantsList = document.getElementById("variantsList");
-    variantsList.innerHTML = ''; // Clear previous content
-  
-    const categoryData = data[category];
-    Object.keys(categoryData).forEach(variant => {
-      const button = document.createElement("button");
-      button.textContent = variant;
-      button.addEventListener("click", function() {
-        console.log("Variant button clicked:", variant);
-        displayPossiblePairs(categoryData[variant]);
       });
-      variantsList.appendChild(button);
-    });
-  }
-  
-  function displayPossiblePairs(variant) {
-    console.log("Displaying possible pairs for variant:", variant);
-    const pairsList = document.getElementById("pairsList");
-    pairsList.innerHTML = ''; // Clear previous content
-  
-    const pairs = [];
-  
-    // Helper function to check if an item is in the pairs array
-    function isInPairs(item) {
-      return pairs.some(pair => pair.includes(item));
-    }
-  
-    // Helper function to check if all items in a match are in the pairs array
-    function matchIsInPairs(match) {
-      return match.every(item => isInPairs(item));
-    }
-  
-    // Generate pairs based on matches
-    variant.matches.forEach(match => {
-      if (!isInPairs(variant.id)) {
-        const matchedItems = match.split('-');
-        if (matchIsInPairs(matchedItems)) {
-          pairs.push(matchedItems);
-        }
-      }
-    });
-  
-    // Display pairs
-    pairs.forEach(pair => {
-      const listItem = document.createElement("li");
-      listItem.textContent = pair.join(', ');
-      pairsList.appendChild(listItem);
-    });
-  }
+}
