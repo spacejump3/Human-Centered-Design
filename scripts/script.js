@@ -7,10 +7,6 @@ fetch('./data.json')
         let pantsBtn = document.getElementById('pantsBtn');
         let shoesBtn = document.getElementById('shoesBtn');
 
-        // Keep track of the selected clothing pieces and their types
-        let selectedPieces = [];
-        let selectedTypes = [];
-
         // Function to create new buttons
         function createButtons(clothingType, matches) {
             // Get the clothing data
@@ -21,6 +17,28 @@ fetch('./data.json')
 
             // Clear the container
             container.innerHTML = '';
+
+            // Map internal type names to display names
+            let clothingTypeNames = {
+                shirt: 'shirt',
+                pants: 'broek',
+                shoes: 'schoen',
+            };
+
+            // Map stages to announcement texts
+            let stageTexts = {
+                0: 'Kies nu een ',
+                1: 'Je hebt een ' + clothingTypeNames[selectedTypes[0]] + ' gekozen. Kies nu een ',
+                2: 'Je hebt een ' + clothingTypeNames[selectedTypes[0]] + ' en een ' + clothingTypeNames[selectedTypes[1]] + ' gekozen. Kies nu een ',
+            };
+
+            // Count the number of matching pieces
+            let count = Object.keys(clothingData).filter((clothingPiece) => !matches || matches.includes(clothingData[clothingPiece].id)).length;
+
+            // Add an aria-live announcement
+            let p = document.getElementById('finalAnnouncement');
+            p.setAttribute('aria-live', 'polite');
+            p.innerText = stageTexts[selectedTypes.length] + clothingTypeNames[clothingType] + '. Er zijn ' + count + ' ' + clothingTypeNames[clothingType] + ' keuzes beschikbaar';
 
             // Create a new button for each clothing piece
             for (let clothingPiece in clothingData) {
@@ -36,9 +54,9 @@ fetch('./data.json')
 
                         // If we're at the last piece, display the selected pieces
                         if (selectedPieces.length === 3) {
-                            let p = document.createElement('p');
+                            let p = document.getElementById('finalAnnouncement');
+                            p.setAttribute('aria-live', 'polite'); // Make it an aria-live region
                             p.innerText = 'U heeft de volgende outfit gekozen: ' + selectedPieces.join(', ') + '. Als u hier niet blij mee bent, kunt u opnieuw beginnen door op de volgende knop te drukken';
-                            container.appendChild(p);
 
                             // Disable all buttons
                             let buttons = document.querySelectorAll('button');
@@ -47,6 +65,7 @@ fetch('./data.json')
                             // Add a restart button
                             let restartBtn = document.createElement('button');
                             restartBtn.innerText = 'Opnieuw een outfit kiezen';
+                            restartBtn.id = 'restartBtn';
                             restartBtn.addEventListener('click', function () {
                                 // Clear the container
                                 container.innerHTML = '';
@@ -57,6 +76,14 @@ fetch('./data.json')
                                 // Clear the selected pieces and types
                                 selectedPieces = [];
                                 selectedTypes = [];
+
+                                // Clear the announcement
+                                p.innerText = '';
+                                p.removeAttribute('aria-live');
+
+                                // Add an aria-live announcement
+                                p.setAttribute('aria-live', 'polite');
+                                p.innerText = 'Je bent opnieuw begonnen en kan nu nog een outfit kiezen';
                             });
                             container.appendChild(restartBtn);
                         } else {
