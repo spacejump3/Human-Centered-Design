@@ -24,7 +24,7 @@
     "pants": {
         "pants-blue": {
             "id": "p-blue",
-            "matches": ["s-white", "s-red", "sh-black", "sh-white"]
+            "matches": ["s-white", "s-red", "s-yellow", "sh-black", "sh-white"]
         },
 
         "pants-green": {
