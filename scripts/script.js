@@ -97,9 +97,47 @@ fetch('./data.json')
                 }
             }
 
+            // Get the buttons
+            let buttons = container.querySelectorAll('button');
+
+            // Add a keydown event listener to the first button
+            buttons[0].addEventListener('keydown', function (event) {
+                if (event.key === 'Tab' && event.shiftKey) {
+                    event.preventDefault();
+                    buttons[buttons.length - 1].focus();
+                }
+            });
+
+            // Add a keydown event listener to the last button
+            buttons[buttons.length - 1].addEventListener('keydown', function (event) {
+                if (event.key === 'Tab' && !event.shiftKey) {
+                    event.preventDefault();
+                    buttons[0].focus();
+                }
+            });
+
             // Focus on the first button
             container.querySelector('button').focus();
         }
+
+        // Get the first set of buttons
+        let firstButtons = [document.getElementById('shirtBtn'), document.getElementById('pantsBtn'), document.getElementById('shoesBtn')];
+
+        // Add a keydown event listener to the first button
+        firstButtons[0].addEventListener('keydown', function (event) {
+            if (event.key === 'Tab' && event.shiftKey) {
+                event.preventDefault();
+                firstButtons[firstButtons.length - 1].focus();
+            }
+        });
+
+        // Add a keydown event listener to the last button
+        firstButtons[firstButtons.length - 1].addEventListener('keydown', function (event) {
+            if (event.key === 'Tab' && !event.shiftKey) {
+                event.preventDefault();
+                firstButtons[0].focus();
+            }
+        });
 
         // Add event listeners to the buttons
         shirtBtn.addEventListener('click', function () {

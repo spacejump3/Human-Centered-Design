@@ -2,6 +2,12 @@ html {
 	font-size: 2em;
 }
 
+body {
+	font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+	background-color: black;
+	color: white;
+}
+
 ul {
 	margin: 1em 0 0 0;
 	padding: 0;
@@ -13,6 +19,6 @@ button {
 	width: 10em;
 }
 
-:focus-visible {
+:focus {
 	background-color: yellow;
 }
