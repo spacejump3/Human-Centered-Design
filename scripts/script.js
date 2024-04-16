@@ -7,6 +7,26 @@ fetch('./data.json')
         let pantsBtn = document.getElementById('pantsBtn');
         let shoesBtn = document.getElementById('shoesBtn');
 
+        // Create a button to repeat the chosen pieces
+        let repeatBtn = document.createElement('button');
+        repeatBtn.id = 'repeatBtn';
+        repeatBtn.innerText = 'Herhaal gekozen kledingstukken';
+        repeatBtn.addEventListener('click', function () {
+            // Get the finalAnnouncement element
+            let p = document.getElementById('finalAnnouncement');
+
+            // Set its aria-live attribute and innerText
+            p.setAttribute('aria-live', 'polite');
+            if (selectedPieces.length > 0) {
+                p.innerText = 'Huidige kledingstukken: ' + selectedPieces.join(', ');
+            } else {
+                p.innerText = 'Er zijn nog geen kledingstukken gekozen.';
+            }
+        });
+
+        // Add the button to the body
+        document.body.appendChild(repeatBtn);
+
         // Function to create new buttons
         function createButtons(clothingType, matches) {
             // Get the clothing data
@@ -15,8 +35,10 @@ fetch('./data.json')
             // Get the container to put the buttons in
             let container = document.getElementById('container');
 
-            // Clear the container
+            // Clear the container, but keep the repeatBtn
+            let repeatBtn = document.getElementById('repeatBtn');
             container.innerHTML = '';
+            if (repeatBtn) container.appendChild(repeatBtn);
 
             // Map internal type names to display names
             let clothingTypeNames = {
@@ -56,7 +78,7 @@ fetch('./data.json')
                         if (selectedPieces.length === 3) {
                             let p = document.getElementById('finalAnnouncement');
                             p.setAttribute('aria-live', 'polite'); // Make it an aria-live region
-                            p.innerText = 'U heeft de volgende outfit gekozen: ' + selectedPieces.join(', ') + '. Als u hier niet blij mee bent, kunt u opnieuw beginnen door op de volgende knop te drukken';
+                            p.innerText = 'U heeft de volgende outfit gekozen: ' + selectedPieces.join(', ') + '. Als u hier niet blij mee bent, kunt u opnieuw beginnen door op \'opnieuw een outfit kiezen\' te drukken';
 
                             // Disable all buttons
                             let buttons = document.querySelectorAll('button');
