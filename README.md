@@ -61,7 +61,7 @@ Positief
 - De knop om te herhalen wat je al had is goed.
 
 Verbeterpunten
-- Op het einde kan je alsnog erbuiten vallen dus dat fixen.
+- Op het einde kan je alsnog erbuiten focussen dus dat fixen. Ik moet sowieso even goed kijken naar de focus traps.
 - Als je verder focust dan hoor je de aria-live niet meer. Die moet je dus opnieuw kunnen horen ook.
 
 Dingen om toe te voegen
@@ -71,3 +71,9 @@ Dingen om toe te voegen
 
 Overige opmerkingen
 - Als ze op een knop drukte en hoorde: "Je hebt nu een [kledingstuk] gekozen", dan ging ze meteen verder tabben zonder de tekst uit te laten spreken. Ze is dus redelijk 'haastig' maar ik wil het er toch in laten want het kan geen kwaad om te weten hoe ver je bent. Ze is dus vrij om meteen verder te gaan, maar kan ook meer informatie krijgen als ze de tekst uit laat spreken.
+
+### Lijst van dingen die ik nog wil toevoegen
+- Meer kledingstukken toevoegen (rok, jurk, jas etc.).
+    - Ervoor zorgen dat het niet mogelijk is om sommige combinaties te kiezen (jurk moet zonder shirt). 
+- Uitgebreide beschrijving toevoegen aan elk kledingstuk. Ik denk gewoon een nieuw property in het object.
+- 
