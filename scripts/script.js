@@ -2,11 +2,6 @@
 fetch('./data.json')
 	.then((response) => response.json())
 	.then((data) => {
-		// Get the buttons
-		let shirtBtn = document.getElementById('shirtBtn');
-		let pantsBtn = document.getElementById('pantsBtn');
-		let shoesBtn = document.getElementById('shoesBtn');
-
 		// Create a button to repeat the chosen pieces
 		let repeatBtn = document.createElement('button');
 		repeatBtn.id = 'repeatBtn';
@@ -27,6 +22,45 @@ fetch('./data.json')
 		// Add the button to the body
 		document.body.appendChild(repeatBtn);
 
+		let list = document.getElementById('initialUl');
+
+		// Create initial buttons for each clothing type
+		for (let clothingType in data) {
+			let btn = document.createElement('button');
+			btn.id = clothingType + 'Btn';
+			btn.innerText = clothingType;
+			btn.addEventListener('click', function () {
+				selectedPieces = [];
+				selectedTypes = [];
+				createButtons(clothingType);
+			});
+			// Create a list item and append the button to it
+			let listItem = document.createElement('li');
+			listItem.appendChild(btn);
+
+			// Append the list item to the list
+			list.appendChild(listItem);
+		}
+
+		// Get the initial buttons
+		let initialButtons = list.querySelectorAll('button');
+
+		// Add a keydown event listener to the first initial button
+		initialButtons[0].addEventListener('keydown', function (event) {
+			if (event.key === 'Tab' && event.shiftKey) {
+				event.preventDefault();
+				initialButtons[initialButtons.length - 1].focus();
+			}
+		});
+
+		// Add a keydown event listener to the last initial button
+		initialButtons[initialButtons.length - 1].addEventListener('keydown', function (event) {
+			if (event.key === 'Tab' && !event.shiftKey) {
+				event.preventDefault();
+				initialButtons[0].focus();
+			}
+		});
+
 		// Function to create new buttons
 		function createButtons(clothingType, matches) {
 			// Get the clothing data
@@ -45,14 +79,20 @@ fetch('./data.json')
 				shirt: 'shirt',
 				pants: 'broek',
 				shoes: 'schoen',
+				jackets: 'jas',
+				hats: 'pet',
 			};
 
 			// Map stages to announcement texts
-			let stageTexts = {
-				0: 'Kies nu een ',
-				1: 'Je hebt een ' + clothingTypeNames[selectedTypes[0]] + ' gekozen. Kies nu een ',
-				2: 'Je hebt een ' + clothingTypeNames[selectedTypes[0]] + ' en een ' + clothingTypeNames[selectedTypes[1]] + ' gekozen. Kies nu een ',
-			};
+			let stageTexts = {};
+			for (let i = 0; i < selectedTypes.length; i++) {
+				let text = 'Je hebt ';
+				for (let j = 0; j < i; j++) {
+					text += 'een ' + clothingTypeNames[selectedTypes[j]] + ', ';
+				}
+				text += 'gekozen. Kies nu een ';
+				stageTexts[i] = text;
+			}
 
 			// Count the number of matching pieces
 			let count = Object.keys(clothingData).filter((clothingPiece) => !matches || matches.includes(clothingData[clothingPiece].id)).length;
@@ -75,7 +115,7 @@ fetch('./data.json')
 						selectedTypes.push(clothingType);
 
 						// If we're at the last piece, display the selected pieces
-						if (selectedPieces.length === 3) {
+						if (selectedPieces.length === 5) {
 							let p = document.getElementById('finalAnnouncement');
 							p.setAttribute('aria-live', 'polite'); // Make it an aria-live region
 							p.innerText = 'U heeft de volgende outfit gekozen: ' + selectedPieces.join(', ') + ". Als u hier niet blij mee bent, kunt u opnieuw beginnen door op 'opnieuw een outfit kiezen' te drukken";
@@ -117,7 +157,7 @@ fetch('./data.json')
 							container.appendChild(restartBtn);
 						} else {
 							// Otherwise, create the next set of buttons
-							let nextType = ['shirt', 'pants', 'shoes'].find((type) => !selectedTypes.includes(type));
+							let nextType = ['shirt', 'pants', 'shoes', 'jackets', 'hats'].find((type) => !selectedTypes.includes(type));
 							createButtons(nextType, clothingData[clothingPiece].matches);
 						}
 					});
@@ -125,87 +165,27 @@ fetch('./data.json')
 					container.appendChild(li);
 				}
 			}
+			// Get the new buttons
+			let newButtons = container.querySelectorAll('button');
 
-			// Get the buttons
-			let buttons = container.querySelectorAll('button');
+			// Shift the focus to the first new button
+			newButtons[0].focus();
 
-			// Add a keydown event listener to the first button
-			buttons[0].addEventListener('keydown', function (event) {
+			// Add a keydown event listener to the first new button
+			newButtons[0].addEventListener('keydown', function (event) {
 				if (event.key === 'Tab' && event.shiftKey) {
 					event.preventDefault();
-					buttons[buttons.length - 1].focus();
+					newButtons[newButtons.length - 1].focus();
 				}
 			});
 
-			// Add a keydown event listener to the last button
-			buttons[buttons.length - 1].addEventListener('keydown', function (event) {
+			// Add a keydown event listener to the last new button
+			newButtons[newButtons.length - 1].addEventListener('keydown', function (event) {
 				if (event.key === 'Tab' && !event.shiftKey) {
 					event.preventDefault();
-					buttons[0].focus();
+					newButtons[0].focus();
 				}
 			});
-
-			// Focus on the first button
-			container.querySelector('button').focus();
 		}
-
-		// Get the first set of buttons
-		let firstButtons = [document.getElementById('shirtBtn'), document.getElementById('pantsBtn'), document.getElementById('shoesBtn')];
-
-		// Add a keydown event listener to the first button
-		firstButtons[0].addEventListener('keydown', function (event) {
-			if (event.key === 'Tab' && event.shiftKey) {
-				event.preventDefault();
-				firstButtons[firstButtons.length - 1].focus();
-			}
-		});
-
-		// Add a keydown event listener to the last button
-		firstButtons[firstButtons.length - 1].addEventListener('keydown', function (event) {
-			if (event.key === 'Tab' && !event.shiftKey) {
-				event.preventDefault();
-				firstButtons[0].focus();
-			}
-		});
-
-		// Add event listeners to the buttons
-		shirtBtn.addEventListener('click', function () {
-			selectedPieces = [];
-			selectedTypes = [];
-			createButtons('shirt');
-		});
-
-		pantsBtn.addEventListener('click', function () {
-			selectedPieces = [];
-			selectedTypes = [];
-			createButtons('pants');
-		});
-
-		shoesBtn.addEventListener('click', function () {
-			selectedPieces = [];
-			selectedTypes = [];
-			createButtons('shoes');
-		});
-
-		document.addEventListener('keydown', function (event) {
-			// If the pressed key is not Tab, ignore this event
-			if (event.key !== 'Tab') return;
-
-			// Get all focusable elements
-			let focusableElements = Array.from(document.querySelectorAll('button:not([disabled]), [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'));
-			let firstFocusableElement = focusableElements[0];
-			let lastFocusableElement = focusableElements[focusableElements.length - 1];
-
-			// If Shift is held down and the first focusable element is focused, focus the last focusable element
-			if (event.shiftKey && document.activeElement === firstFocusableElement) {
-				event.preventDefault();
-				lastFocusableElement.focus();
-			}
-			// If Shift is not held down and the last focusable element is focused, focus the first focusable element
-			else if (!event.shiftKey && document.activeElement === lastFocusableElement) {
-				event.preventDefault();
-				firstFocusableElement.focus();
-			}
-		});
 	})
 	.catch((error) => console.error('Error:', error));

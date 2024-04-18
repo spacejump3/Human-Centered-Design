@@ -2,56 +2,80 @@
     "shirt": {
         "blauwe shirt": {
             "id": "s-blue",
-            "matches": ["p-white", "p-black", "sh-white", "sh-black"]
+            "matches": ["p-white", "p-black", "sh-white", "sh-black", "jack-winter", "jack-summer", "hat-party", "hat-cap"]
         },
 
         "rode shirt": {
             "id": "s-red",
-            "matches": ["p-white", "p-black", "p-blue", "sh-white", "sh-black"]
+            "matches": ["p-white", "p-black", "p-blue", "sh-white", "sh-black", "jack-winter", "jack-summer", "hat-party", "hat-cap"]
         },
 
         "gele shirt": {
             "id": "s-yellow",
-            "matches": ["p-blue", "p-black", "sh-black", "sh-white"]
+            "matches": ["p-blue", "p-black", "sh-black", "sh-white", "jack-winter", "jack-summer", "hat-party"]
         },
 
         "witte shirt": {
             "id": "s-white",
-            "matches": ["p-blue", "p-black", "p-green", "sh-black", "sh-white"]
+            "matches": ["p-blue", "p-black", "p-green", "sh-black", "sh-white", "jack-winter", "jack-summer", "hat-party", "hat-cap"]
         }
     },
 
     "pants": {
         "blauwe broek": {
             "id": "p-blue",
-            "matches": ["s-white", "s-red", "s-yellow", "sh-black", "sh-white"]
+            "matches": ["s-white", "s-red", "s-yellow", "sh-black", "sh-white", "jack-winter", "jack-summer", "hat-cap"]
         },
 
         "groene broek": {
             "id": "p-green",
-            "matches": ["s-white", "sh-black", "sh-white"]
+            "matches": ["s-white", "sh-black", "sh-white", "jack-winter", "jack-summer", "hat-party"]
         },
 
         "witte broek": {
             "id": "p-white",
-            "matches": ["s-blue", "s-red", "sh-black"]
+            "matches": ["s-blue", "s-red", "sh-black", "jack-winter", "jack-summer", "hat-party", "hat-cap"]
         },
 
         "zwarte broek": {
             "id": "p-black",
-            "matches": ["s-blue", "s-white", "s-yellow", "s-red", "sh-white"]
+            "matches": ["s-blue", "s-white", "s-yellow", "s-red", "sh-white", "jack-winter", "jack-summer", "hat-cap"]
         }
     },
 
     "shoes": {
         "witte schoenen": {
             "id": "sh-white",
-            "matches": ["s-blue", "s-white", "s-yellow", "s-red", "p-blue", "p-green", "p-black"]
+            "matches": ["s-blue", "s-white", "s-yellow", "s-red", "p-blue", "p-green", "p-black", "jack-winter", "jack-summer" , "hat-party", "hat-cap"]
         },
 
         "zwarte schoenen": {
             "id": "sh-black",
-            "matches": ["s-blue", "s-white", "s-yellow", "s-red", "p-blue", "p-green", "p-white"]
+            "matches": ["s-blue", "s-white", "s-yellow", "s-red", "p-blue", "p-green", "p-white", "jack-winter", "jack-summer", "hat-party", "hat-cap"]
+        }
+    },
+
+    "jackets": {
+        "winterjas": {
+            "id": "jack-winter",
+            "matches": ["s-blue", "s-white", "s-yellow", "s-red", "p-blue", "p-green", "p-black", "sh-black", "sh-white", "hat-party"]
+        },
+
+        "zomerjas": {
+            "id": "jack-summer",
+            "matches": ["s-blue", "s-white", "s-yellow", "s-red", "p-blue", "p-green", "p-white", "sh-black", "sh-white", "hat-cap"]
+        }
+    },
+
+    "hats": {
+        "feesthoed": {
+            "id": "hat-party",
+            "matches": ["s-yellow", "s-red", "p-blue", "p-green", "sh-white"]
+        },
+
+        "pet": {
+            "id": "hat-cap",
+            "matches": ["s-blue", "s-white", "s-yellow", "s-red", "p-blue", "p-green", "p-white", "sh-black", "sh-white"]
         }
     }
 }
