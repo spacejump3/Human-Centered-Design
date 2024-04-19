@@ -93,3 +93,6 @@ Overige opmerkingen
     -   In this way I can also add more groups and subgroups so that she doesn't need to tab for a very long time.
 -   Skip button.
 -   Add accessories (hat, earrings, bracelets etc.).
+
+### Eric feedback
+- Zorg ervoor dat de functionaliteit wat je hebt, dat je die goed verbetert.
