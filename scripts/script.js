@@ -106,7 +106,7 @@ fetch('./data.json')
 				shirt: 'shirt',
 				pants: 'broek',
 				shoes: 'schoen',
-				jackets: 'jas'
+				jackets: 'jas',
 			};
 
 			// Map stages to announcement texts
@@ -139,7 +139,9 @@ fetch('./data.json')
 					btn.innerText = clothingPiece;
 
 					// Add the description to the aria-label attribute
-					btn.setAttribute('aria-label', clothingData[clothingPiece].description);
+					if (clothingData[clothingPiece].description) {
+						btn.setAttribute('aria-label', clothingData[clothingPiece].description);
+					}
 
 					btn.addEventListener('click', function () {
 						// Add the selected piece and its type to the lists
