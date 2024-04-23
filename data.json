@@ -1,8 +1,9 @@
 {
     "shirt": {
-        "blauwe shirt": {
+        "Tuniek": {
             "id": "s-blue",
-            "matches": ["p-white", "p-black", "sh-white", "sh-black", "jack-winter", "jack-summer", "hat-party", "hat-cap"]
+            "matches": ["p-white", "p-black", "sh-white", "sh-black", "jack-winter", "jack-summer", "hat-party", "hat-cap"],
+            "description": "Tuniek met lange mouwen"
         },
 
         "rode shirt": {
@@ -44,14 +45,16 @@
     },
 
     "shoes": {
-        "witte schoenen": {
+        "sneakers": {
             "id": "sh-white",
-            "matches": ["s-blue", "s-white", "s-yellow", "s-red", "p-blue", "p-green", "p-black", "jack-winter", "jack-summer" , "hat-party", "hat-cap"]
+            "matches": ["s-blue", "s-white", "s-yellow", "s-red", "p-blue", "p-green", "p-black", "jack-winter", "jack-summer" , "hat-party", "hat-cap"],
+            "description": "comfortabele witte sneakers"
         },
 
-        "zwarte schoenen": {
+        "laarzen": {
             "id": "sh-black",
-            "matches": ["s-blue", "s-white", "s-yellow", "s-red", "p-blue", "p-green", "p-white", "jack-winter", "jack-summer", "hat-party", "hat-cap"]
+            "matches": ["s-blue", "s-white", "s-yellow", "s-red", "p-blue", "p-green", "p-white", "jack-winter", "jack-summer", "hat-party", "hat-cap"],
+            "description": "hoge zwarte laarzen"
         }
     },
 
@@ -64,18 +67,6 @@
         "zomerjas": {
             "id": "jack-summer",
             "matches": ["s-blue", "s-white", "s-yellow", "s-red", "p-blue", "p-green", "p-white", "sh-black", "sh-white", "hat-cap"]
-        }
-    },
-
-    "hats": {
-        "feesthoed": {
-            "id": "hat-party",
-            "matches": ["s-yellow", "s-red", "p-blue", "p-green", "sh-white"]
-        },
-
-        "pet": {
-            "id": "hat-cap",
-            "matches": ["s-blue", "s-white", "s-yellow", "s-red", "p-blue", "p-green", "p-white", "sh-black", "sh-white"]
         }
     }
 }

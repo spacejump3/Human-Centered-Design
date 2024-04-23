@@ -29,7 +29,27 @@ fetch('./data.json')
 		for (let clothingType in data) {
 			let btn = document.createElement('button');
 			btn.id = clothingType + 'Btn';
-			btn.innerText = clothingType;
+			// Change the button text
+			switch (clothingType) {
+				case 'shirt':
+					btn.innerText = 'Shirts';
+					break;
+				case 'pants':
+					btn.innerText = 'Broeken';
+					break;
+				case 'shoes':
+					btn.innerText = 'Schoenen';
+					break;
+				case 'jackets':
+					btn.innerText = 'Jassen';
+					break;
+				case 'hats':
+					btn.innerText = 'Hoofddeksels';
+					break;
+				default:
+					btn.innerText = clothingType;
+			}
+
 			btn.addEventListener('click', function () {
 				selectedPieces = [];
 				selectedTypes = [];
@@ -86,8 +106,7 @@ fetch('./data.json')
 				shirt: 'shirt',
 				pants: 'broek',
 				shoes: 'schoen',
-				jackets: 'jas',
-				hats: 'pet',
+				jackets: 'jas'
 			};
 
 			// Map stages to announcement texts
@@ -108,6 +127,7 @@ fetch('./data.json')
 			// Add an aria-live announcement
 			let p = document.getElementById('finalAnnouncement');
 			p.setAttribute('aria-live', 'polite');
+			p.style.pointerEvents = 'none';
 			p.innerText = stageTexts[selectedTypes.length] + '. Kies nu een ' + clothingTypeNames[clothingType] + '. Er ' + (count === 1 ? 'is' : 'zijn') + ' ' + count + ' ' + clothingTypeNames[clothingType] + (count === 1 ? ' keuze' : ' keuzes') + ' beschikbaar';
 
 			// Create a new button for each clothing piece
@@ -117,13 +137,17 @@ fetch('./data.json')
 					let li = document.createElement('li');
 					let btn = document.createElement('button');
 					btn.innerText = clothingPiece;
+
+					// Add the description to the aria-label attribute
+					btn.setAttribute('aria-label', clothingData[clothingPiece].description);
+
 					btn.addEventListener('click', function () {
 						// Add the selected piece and its type to the lists
 						selectedPieces.push(clothingPiece);
 						selectedTypes.push(clothingType);
 
 						// If we're at the last piece, display the selected pieces
-						if (selectedPieces.length === 5) {
+						if (selectedPieces.length === 4) {
 							let p = document.getElementById('finalAnnouncement');
 							p.setAttribute('aria-live', 'polite'); // Make it an aria-live region
 							p.innerText = 'U heeft de volgende outfit gekozen: ' + selectedPieces.join(', ') + ". Als u hier niet blij mee bent, kunt u opnieuw beginnen door op 'opnieuw een outfit kiezen' te drukken";
@@ -159,7 +183,7 @@ fetch('./data.json')
 								newButtons.forEach((button) => (button.style.display = 'inline'));
 
 								// remove repeatbtn
-								repeatBtn.style.display = 'none'
+								repeatBtn.style.display = 'none';
 							});
 							container.appendChild(restartBtn);
 						} else {
