@@ -96,3 +96,16 @@ Overige opmerkingen
 
 ### Eric feedback
 - Zorg ervoor dat de functionaliteit wat je hebt, dat je die goed verbetert.
+
+## Week 4 
+
+### Prototype testing
+Opdracht die ik haar wil geven:
+- 1: Maak 2 keer achter elkaar een outfit.
+- 2: Als je niet meer weet waar je bent, probeer alsnog terug te gaan naar de buttons. Is dat lastig / vervelend?
+
+- Dingen wat ik uit deze test wil halen:
+    - Kan ze makkelijk een outfit creeëren op mobiel zonder de weg kwijt te raken?
+    - Als ze de weg alsnog kwijtraakt, kan ze toch haar weg terugvinden?
+
+### Conclusie

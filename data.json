@@ -6,41 +6,48 @@
             "description": "Tuniek met lange mouwen"
         },
 
-        "rode shirt": {
+        "Blouse": {
             "id": "s-red",
-            "matches": ["p-white", "p-black", "p-blue", "sh-white", "sh-black", "jack-winter", "jack-summer", "hat-party", "hat-cap"]
+            "matches": ["p-white", "p-black", "p-blue", "sh-white", "sh-black", "jack-winter", "jack-summer", "hat-party", "hat-cap"],
+            "description": "blouse met korte mouwen en bloemetjespatroon"
         },
 
-        "gele shirt": {
+        "Trui met lange mouwen": {
             "id": "s-yellow",
-            "matches": ["p-blue", "p-black", "sh-black", "sh-white", "jack-winter", "jack-summer", "hat-party"]
+            "matches": ["p-blue", "p-black", "sh-black", "sh-white", "jack-winter", "jack-summer", "hat-party"],
+            "description": "Gele trui met lange mouwen"
         },
 
         "witte shirt": {
             "id": "s-white",
-            "matches": ["p-blue", "p-black", "p-green", "sh-black", "sh-white", "jack-winter", "jack-summer", "hat-party", "hat-cap"]
+            "matches": ["p-blue", "p-black", "p-green", "sh-black", "sh-white", "jack-winter", "jack-summer", "hat-party", "hat-cap"],
+            "description": "Witte T-shirt"
         }
     },
 
     "pants": {
-        "blauwe broek": {
+        "Donkerblauwe spijkerbroek": {
             "id": "p-blue",
-            "matches": ["s-white", "s-red", "s-yellow", "sh-black", "sh-white", "jack-winter", "jack-summer", "hat-cap"]
+            "matches": ["s-white", "s-red", "s-yellow", "sh-black", "sh-white", "jack-winter", "jack-summer", "hat-cap"],
+            "description": "Donkerblauwe spijkerbroek, redelijk strak"
         },
 
-        "groene broek": {
+        "Donkergroene cargopants": {
             "id": "p-green",
-            "matches": ["s-white", "sh-black", "sh-white", "jack-winter", "jack-summer", "hat-party"]
+            "matches": ["s-white", "sh-black", "sh-white", "jack-winter", "jack-summer", "hat-party"],
+            "description": "Donkergroene cargopants met veel zakken aan de zijkanten van de broekspijpen"
         },
 
-        "witte broek": {
+        "flared jeans": {
             "id": "p-white",
-            "matches": ["s-blue", "s-red", "sh-black", "jack-winter", "jack-summer", "hat-party", "hat-cap"]
+            "matches": ["s-blue", "s-red", "sh-black", "jack-winter", "jack-summer", "hat-party", "hat-cap"],
+            "description": "Witte flared jeans strak bij de heupen die uitlopen vanaf de knieën naar beneden"
         },
 
-        "zwarte broek": {
+        " Wijde zwarte broek": {
             "id": "p-black",
-            "matches": ["s-blue", "s-white", "s-yellow", "s-red", "sh-white", "jack-winter", "jack-summer", "hat-cap"]
+            "matches": ["s-blue", "s-white", "s-yellow", "s-red", "sh-white", "jack-winter", "jack-summer", "hat-cap"],
+            "description": "Wijde zwarte broek"
         }
     },
 

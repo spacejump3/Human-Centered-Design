@@ -114,9 +114,9 @@ fetch('./data.json')
 			for (let i = 0; i <= selectedTypes.length; i++) {
 				let text;
 				if (i === 0) {
-					text = 'Je hebt gekozen voor de ' + clothingTypeNames[clothingType] + ' categorie';
+					text = 'U heeft gekozen voor de ' + clothingTypeNames[clothingType] + ' categorie';
 				} else {
-					text = 'Je hebt een ' + clothingTypeNames[selectedTypes[i - 1]] + ' gekozen';
+					text = 'U heeft een ' + clothingTypeNames[selectedTypes[i - 1]] + ' gekozen';
 				}
 				stageTexts[i] = text;
 			}
@@ -178,7 +178,7 @@ fetch('./data.json')
 
 								// Add an aria-live announcement
 								p.setAttribute('aria-live', 'polite');
-								p.innerText = 'Je bent opnieuw begonnen en kan nu nog een outfit kiezen';
+								p.innerText = 'U bent opnieuw begonnen en kan nu nog een outfit kiezen';
 
 								// Show the initial buttons
 								initialButtons.forEach((button) => (button.style.display = 'inline'));
@@ -190,7 +190,7 @@ fetch('./data.json')
 							container.appendChild(restartBtn);
 						} else {
 							// Otherwise, create the next set of buttons
-							let nextType = ['shirt', 'pants', 'shoes', 'jackets', 'hats'].find((type) => !selectedTypes.includes(type));
+							let nextType = ['jackets', 'shirt', 'pants', 'shoes'].find((type) => !selectedTypes.includes(type));
 							createButtons(nextType, clothingData[clothingPiece].matches);
 						}
 					});
