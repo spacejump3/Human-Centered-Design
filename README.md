@@ -4,38 +4,39 @@ Welcome to blablabla ik doe dit later wel.
 
 ## Interview with Petra
 
-Petra is a born blind woman. Our task is to create an app specifically for her to use. She wants an app where she can more easily choose what type of clothing fits each other. Here are some take-aways from the first interview we did:
+Petra is een geboren blinde vrouw. De opdracht is om een app te maken die speciaal voor haar is bedoeld. Ze wil een app waarmee ze makkelijker kan kiezen welk type kleding bij elkaar past. Hier zijn een paar punten van het eerste interview die we hebben gedaan:
 
-**Navigating the app**
+**Navigatie door de app**
 
--   The most important thing is that she needs to know where she is on the site. This means that every button, link or whatever HAS to be correctly described.
--   She uses both desktop and mobile, but prefers mobile. On desktop she uses a software called nvda and on mobile she uses the built in iPhone screenreader.
--   She wants to be able to see/hear everything that the app has to offer, so no skipping links.
--   Websites and apps CAN be fun and have for example some audio, but it's important that it doesn't confuse or distract Petra.
+- Het belangrijkste is dat ze moet weten waar ze zich op de site bevindt. Dit betekent dat elke knop, link of wat dan ook correct moet worden beschreven.
+- Ze gebruikt zowel desktop als mobiel, maar geeft de voorkeur aan mobiel. Op desktop gebruikt ze nvda en op mobiel de ingebouwde iPhone screenreader.
+- Ze wil alles kunnen zien/horen wat de app te bieden heeft, dus geen links overslaan.
+- Websites en apps KUNNEN leuk zijn en bijvoorbeeld geluid bevatten, maar het is belangrijk dat het Petra niet verwart of afleidt.
 
-**Clothing**
+**Kleding**
 
--   Her biggest difficulty is finding colors and color combinations. She does find it important that the colors look right on her. So making sure she KNOWS which colors she's choosing is an important factor.
--   If she wants to choose a clothing piece, she wants to exactly know what it looks like. So the alt text/description should be very detailed and objective (e.g. 'this blue dress has a flower pattern' instead of 'this beautiful summerlike dress has happy flowers scattered across a vibrant blue sky').
--   She has different clothing for different occasions (she mentions she has a winter- and summer box). However, she doesn't need handholding when it comes to picking these clothing items for an occassion. If it's raining outside, she will know that she wants to pick a jacket.
+- Haar grootste probleem is het vinden van kleuren en kleurencombinaties. Ze vindt het belangrijk dat de kleuren haar goed staan. Het is dus belangrijk dat ze weet welke kleuren ze kiest.
+- Als ze een kledingstuk wil kiezen, wil ze precies weten hoe het eruit ziet. De alt-tekst/beschrijving moet dus heel gedetailleerd en objectief zijn (bijv. 'deze blauwe jurk heeft een bloemenpatroon' in plaats van 'deze mooie zomerse jurk heeft vrolijke bloemen verspreid over een levendige blauwe lucht').
+- Ze heeft verschillende kledingstukken voor verschillende gelegenheden (ze vermeldt dat ze een winter- en zomerdoos heeft). Ze heeft echter geen hulp nodig bij het kiezen van deze kledingstukken voor een gelegenheid. Als het buiten regent, weet ze dat ze een jas moet kiezen.
 
-**Other**
+**Andere**
 
--   She doesn't want to be dependant on other people to use this app.
+-   Ze wil niet afhankelijk zijn van andere mensen om de app te gebruiken.
 
 ### What will I do with this information?
 
-So, first impressions is that it's gonna be very difficult to create this. But, I do have some first ideas:
+De eerste indruk is dat het erg moeilijk wordt om dit te maken. Maar ik heb wel wat eerste ideeën:
 
-First things first: I don't know exactly what clothing combinations she wants. Heck, she can't even TRULY know what she wants since she can't see the clothes she's wearing. So to make it simple, for my prototype I'm gonna assume which clothing combinations she prefers. That way I can completely focus on the functionality of the app. In a perfect world I would have all the data of what she likes and what combinations she likes, so that then the app would work flawlessly. So by making assumptions on the clothing/color combinations I can atleast test if the app actually works for Petra.
+Ten eerste: ik weet niet precies welke kledingcombinaties ze wil. Zelf Petra kan niet eens echt weten wat ze wil, omdat ze zelf niet kan zien wat voor kleding ze draagt. Dus om het eenvoudig te houden, ga ik er voor mijn prototype van uit welke kledingcombinaties ze het liefst draagt. Op die manier kan ik me volledig richten op de functionaliteit van de app. In een perfecte wereld zou ik alle gegevens hebben over wat ze leuk vindt en welke combinaties ze leuk vindt, zodat de app dan vlekkeloos zou werken. Dus door aannames te doen over de kleding/kleurcombinaties kan ik in ieder geval testen of de app ook echt goed functioneert voor Petra.
 
-Now, for the ideas. I have a couple that I can work out.
+Ik heb hier een eerste idee:
 
--   A flow chart/filtering system. The entire app is based on combinations of colors and clothing, so there is a way to filter that out. So let's say you start with a color. Since there are general conventions of what colors are nice together, we can already filter out other colors. Pink wouldn't fit green for example. So choosing pink would exclude green and vice versa.
+- Een flowchart/filter systeem. De hele app is gebaseerd op combinaties van kleuren en kleding, dus er is een manier om dat eruit te filteren. Dus laten we zeggen dat je begint met een kleur. Omdat er algemene conventies zijn over welke kleuren mooi bij elkaar passen, kunnen we andere kleuren er al uitfilteren. Roze past bijvoorbeeld niet bij groen. Dus als je roze kiest, sluit je groen uit en omgekeerd.
 
 ## Week 2
 
 ### Pre prototype testing
+Ik heb een prototype gemaakt waar je een outfit kan maken met 3 kledingstukken: een shirt, een broek en schoenen. Je hebt in het begin de keus met welk kledingstuk je wil beginnen. Dus als je voor een shirt kiest, krijg je een lijst van shirts waar je uit kan kiezen. Als je daarna een shirt hebt gekozen, moet je kiezen voor het volgende kledingstuk, in dit geval een broek.
 
 ### Prototype testing
 
@@ -107,5 +108,10 @@ Opdracht die ik haar wil geven:
 - Dingen wat ik uit deze test wil halen:
     - Kan ze makkelijk een outfit creeëren op mobiel zonder de weg kwijt te raken?
     - Als ze de weg alsnog kwijtraakt, kan ze toch haar weg terugvinden?
+
+#### Petra feedback
+- Wat als ze blij is met een outfit? Dan een knop toevoegen dat het is afgerond
+- Kledingstukken kunnen skippen.
+- Zorgen dat ze weet dat ze aan het einde of aan het begin is.
 
 ### Conclusie
