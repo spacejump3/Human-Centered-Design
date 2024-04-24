@@ -1,8 +1,8 @@
 # Human-Centered-Design
 
-Welcome to blablabla ik doe dit later wel.
+Welkom bij de read-me van Human Centered Design. Voor dit project heb ik een toegankelijke app gemaakt voor 1 specifiek persoon met een beperking. Elke week hebben we een prototype getest om te ontdekken wat ze precies wou en wat het beste voor haar werkte. In deze read-me kan je lezen hoe dat proces is gegaan.
 
-## Interview with Petra
+## Interview met Petra
 
 Petra is een geboren blinde vrouw. De opdracht is om een app te maken die speciaal voor haar is bedoeld. Ze wil een app waarmee ze makkelijker kan kiezen welk type kleding bij elkaar past. Hier zijn een paar punten van het eerste interview die we hebben gedaan:
 
@@ -23,7 +23,7 @@ Petra is een geboren blinde vrouw. De opdracht is om een app te maken die specia
 
 -   Ze wil niet afhankelijk zijn van andere mensen om de app te gebruiken.
 
-### What will I do with this information?
+### Wat doe ik met deze informatie?
 
 De eerste indruk is dat het erg moeilijk wordt om dit te maken. Maar ik heb wel wat eerste ideeën:
 
@@ -35,10 +35,17 @@ Ik heb hier een eerste idee:
 
 ## Week 2
 
-### Pre prototype testing
-Ik heb een prototype gemaakt waar je een outfit kan maken met 3 kledingstukken: een shirt, een broek en schoenen. Je hebt in het begin de keus met welk kledingstuk je wil beginnen. Dus als je voor een shirt kiest, krijg je een lijst van shirts waar je uit kan kiezen. Als je daarna een shirt hebt gekozen, moet je kiezen voor het volgende kledingstuk, in dit geval een broek.
+### Voorbereiding eerste test
+Ik heb een prototype gemaakt waar je een outfit kan maken met 3 kledingstukken: een shirt, een broek en schoenen. Je hebt in het begin de keus met welk kledingstuk je wil beginnen. Dus als je voor een shirt kiest, krijg je een lijst van shirts waar je uit kan kiezen. Als je daarna een shirt hebt gekozen, moet je kiezen voor het volgende kledingstuk, in dit geval krijg je een lijst van broeken. Er komen ook alleen broeken in deze lijst die passen bij het vorige kledingstuk. De manier hoe ik dit doe is door een JSON object te maken van een kledingstuk met daarin een id and een array van matches. Als een bepaald kledingstuk in die array zit, wordt het getoond:
 
-### Prototype testing
+```json
+    "rode shirt": {
+        "id": "s-red",
+        "matches": ["p-white", "p-black", "p-blue", "sh-white", "sh-black", "jack-winter", "jack-summer", "hat-party", "hat-cap"]
+    }
+```
+
+### Prototype testen
 
 Feedback Petra:
 
@@ -58,9 +65,15 @@ Dingen om toe te voegen:
 -   Meer beschrijvende kledingstukken.
 -   Eventueel een manier om zelf kledingstukken toe te voegen.
 
+### Reflectie test 1
+Ik had al een verwachting dat er wel IETS fout zou gaan, maar ik had wel iets ontdekt dat ik niet had verwacht. Ik dacht dat selecteren op een screenreader ongeveer hetzelfde zou zijn al focussen met tab. Maar dat is dus wel anders. Het grootste probleem wat Petra dus had was dat ze constant ging swipen naar de knoppen waar ze eigenlijk niet heen moest. Hierdoor wist ze niet altijd waar ze was. Wat ik vooral opmerkte was dat toen ze een outfit ging kiezen ze koos voor een shirt, toen een broek, maar bij schoenen ging ze weer verder terug naar de beginkeuzes. Toen klikte ze op de schoenen knop en dacht ze dat ze klaar was. Maar eigenlijk was ze dus opnieuw begonnen. Waar ik vooral op moet focussen is dus dat ze niet overal heen kan met de screenreader.
+
 ## Week 3
 
 ### Prototype testing
+
+### Voorbereiding tweede test
+Voor de tweede test heb ik besloten om het op mijn laptop te testen. Ik heb namelijk de focus states redelijk goed geoptimaliseerd voor laptop momenteel en dat wil ik toch nog even testen. Nu veranderd de focus naar de juiste buttons en zit je ge-focus trapt zodat ze niet perongeluk de weg kwijtraakt. Ik heb ook een knop toegevoegd waarmee je kan herhalen wat de kledingstukken zijn die je momenteel hebt gekozen.
 
 Positief
 
@@ -98,7 +111,13 @@ Overige opmerkingen
 ### Eric feedback
 - Zorg ervoor dat de functionaliteit wat je hebt, dat je die goed verbetert.
 
+### Reflectie test 2
+Ze kon goed op weg met deze versie van de app. Ze kon makkelijk erdoorheen en raakt niet de weg kwijt. Waar ik me vooral nu op moet focussen is echt het 'echter' maken van de app. Meer kledingstukken toevoegen en meer gedetailleerde beschrijvingen van die kledingstukken.
+
 ## Week 4 
+
+### Voorbereiding derde test
+Voor de derde test heb ik vooral gekeken naar de mobiele navigatie om die te verbeteren. Ik heb het ook voor mezelf in de code makkelijker gemaakt om kledingstukken toe te voegen. Ten slotte heb ik nog beschrijvingen toe gevoegd aan de kledingstukken
 
 ### Prototype testing
 Opdracht die ik haar wil geven:
