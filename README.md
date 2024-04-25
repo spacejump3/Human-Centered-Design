@@ -148,6 +148,31 @@ Opdracht die ik haar wil geven:
 - Kledingstukken kunnen skippen.
 - Zorgen dat ze weet dat ze aan het einde of aan het begin is.
 
+### Exclusive design principles
+Voor dit project hebben we gewerkt met de exclusive design principles. Dit laatste stukje gaat over hoe ik dat heb aangepakt in mijn app.
+
+**Study situation**
+Aan het begin van het project hebben we Petra geïnterviewt om te ontdekken wat ze precies wil in haar app, maar ook hoe ze haar navigeert door het web en wat voor device ze gebruikt. We hebben toen ontdekt dat ze het makkelijkst op haar iPhone werkt, dus we moesten de mobiele ervaring prioriteren. Als ze haar laptop gebruikt, gebruikt ze een software genaamd NVDA.
+
+Voor mijn app heb ik dus ook zelf de screenreader vaak aan gezet om te kijken wat het doet en of het goed gaat met mijn app. Ik heb het ook op mobiel getest, maar omdat ik een android telefoon heb werkt het toch net wat anders. Dat merkte ik ook vooral toen ik beschrijvingen heb toegevoegd aan elk kledingstuk. Die werden niet voorgelezen door mijn screenreader, maar wel door die van Petra. Wel geluk gehad daarmee dus, maar wel goede dingen om op te letten.
+
+**Ignore conventions**
+Normaal gesproken heeft een website een navigatie, main content en een footer. Die van mij heeft alleen de main content. De reden is natuurlijk omdat een navigatie en een footer overbodig zouden zijn voor Petra. Ze wil simpelweg een app waarmee ze outfits kan maken, dus die extra informatie is niet nodig. Eigenlijk zitten die dingen alleen maar in de weg, vooral voor een blind persoon.
+
+De andere convention die ik heb genegeerd zijn focus traps. Een focus trap is een gedeelte van je app waarbij je eigenlijk vast zit in een gedeelte van de website als je geen muis kan gebruiken. Normaal gesproken zou je alle controle willen hebben en overal heen willen gaan, maar in het geval van Petra heb ik expres focus traps gemaakt. Ik merkte namelijk bij de tests dat ze constant over de headings en de aria-live tekst ging waardoor ze kwijt was waar ze was gebleven. Ik heb er dus voor gekozen dat ze juist vast zit in de lijst van buttons zodat ze altijd weet waar ze is.
+
+**Prioritise Identity**
+Voor prioritise identity is het vooral dat deze app echt is gericht naar Petra. Het is misschien niet exact in mijn app zo, maar in theorie zouden alle kleren die Petra in haar kledingkast heeft in de app zitten. Die kleren zouden dus ook matchen met andere kledingstukken naar Petra's voorkeur. In dit geval heb ik dus wel zelf de kledingstukken uitgekozen en heb ik me vooral gefocust op de functionaliteit.
+
+Hierbij moet ik wel zeggen dat ik wel wat meer had kunnen doen om de app zo te maken dat het écht van Petra is. Dat kon op een simpele manier door bijvoorbeeld een intro tekst toe te voegen die Petra bij haar naam benoemd, of juist door de styling zo te maken dat het bij haar stijl past. Ze kan misschien blind zijn, maar ze vind overduidelijk belangrijk hoe ze eruit ziet qua kleding en dat had ik wat beter kunnen vertalen naar de app. 
+
+**Add nonsense**
+De nonsense heb ik vooral voor mezelf toegevoegd. Ik heb een leuke styling toegevoegd met neon buttons die oplichten en vergoten wanneer je eroverheen tabt. Natuurlijk omdat Petra blind is krijgt ze hier niks van mee. Maar het is niet alleen voor gein. Voor mij is het eigenlijk best handig om duidelijk te zien waar ze op focust met die focus states. Met een kleine outline kan het best lastig zijn om te zien wat er precies gebeurt, dus daarom is het toch best handig voor mij tijdens het testen.
+
+Ik merkte al sinds het begin dat focus states net wat anders werken dan 'screenreader focus states'. Een heading kan bijvoorbeeld geen focus krijgen, maar je kan er wel op 'focussen' met een screenreader. Van wat ik heb gezien is er ook geen mogelijkheid om screenreader focus te stylen. Op desktop kan je met de pijltjes toetsen de screenreader focus bedienen, maar je kan alleen HOREN via de screenreader waar je bent. Je ziet niet een outline (wel op mobiel). Dus eigenlijk vind ik dat je screenreader focus wel zou moeten kunnen stylen zodat ik niet alleen meer nonsense kan toevoegen, maar ook beter toegankelijkheid kan ontwerpen voor slechtzienden. Overigens lijkt het me ook enorm handig voor mensen die niet volledig blind zijn als het deel dat wordt voorgelezen ook gestyled kan worden. Je zou de tekst dan vetgedrukt, groter en een highlight kunnen geven wanneer het wordt gelezen door een screenreader.
+
+Wat ik zelf nog wel had willen toevoegen aan mijn app waar ik niet aan toe ben gekomen zijn geluiden. En dan vooral specifieke geluiden voor als je elementen selecteert, op buttons drukt, wanneer je opnieuw begint en wanneer je kledingstukken herhaalt. Dat zou de app toch wat meer persoonlijkheid geven terwijl het ook nog een functie heeft.
+
 ### Conclusie
 
 Ik ben redelijk blij met het eindproduct, maar ik heb toch het gevoel dat ik wat meer kon toevoegen. Als ik nog meer tijd overhad zou ik sowieso een functie toevoegen dat je je outfits kan opslaan. Ik was ook in het begin heel bang om te proberen een functie te maken om zelf kledingstukken toe te voegen. Maar toen ik bij anderen heb gezien hoe ze het hebben gedaan, denk ik toch bij mezelf dat ik dat ook wel had kunnen doen. Dus over het algemeen wel blij, maar achteraf had ik de app nog iets vollediger kunnen maken met een net wat andere aanpak.
